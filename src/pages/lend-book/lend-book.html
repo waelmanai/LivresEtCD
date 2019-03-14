@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button clear (click)="dismissModal()"> <Back </button>
+    </ion-buttons>
+    <ion-title>{{book.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-card [ngClass]="{'is-lend': book.isLend, 'no-lend': !book.isLend}">
+    <ion-card-header>{{book.title}}</ion-card-header>
+    <ion-card-content>
+      <ion-card-title>{{book.subTitle}}</ion-card-title>
+      <p *ngFor="let authname of book.authorName">{{authname}}</p>
+      <p>Année: {{book.publishDate}}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button full color="secondary"
+        (click)="onToggleLendBook()" [disabled]="!book.isLend">Prêter</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full color="primary"
+        (click)="onToggleLendBook()" [disabled]="book.isLend">Rendre</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

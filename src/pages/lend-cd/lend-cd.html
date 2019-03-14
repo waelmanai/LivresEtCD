@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button clear (click)="dismissModal()"> <Back </button>
+    </ion-buttons>
+    <ion-title>{{cd.albumTitle}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+<ion-card [ngClass]="{'is-lend': cd.isLend, 'no-lend': !cd.isLend}">
+  <ion-card-header>{{cd.albumTitle}}</ion-card-header>
+  <ion-card-content>
+    <p>Artiste: {{cd.artistName}}</p>
+    <p>Année: {{cd.publishDate}}</p>
+  </ion-card-content>
+</ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button full color="secondary"
+        (click)="onToggleLendCd()" [disabled]="!cd.isLend">Prêter</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full color="primary"
+        (click)="onToggleLendCd()" [disabled]="cd.isLend">Rendre</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
